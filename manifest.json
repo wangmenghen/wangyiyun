@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "酷狗网易云音乐导入",
+  "version": "1.0",
+  "description": "酷狗网易云音乐歌单导入",
+  "icons": {
+      "16": "images/images.jpg",
+      "48": "images/images.jpg",
+      "128": "images/images.jpg"
+  },
+  "browser_action": {
+      "default_icon": {
+          "19": "images/images.jpg",
+          "38": "images/images.jpg"
+      },
+      "default_title": "歌单",
+      "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://music.163.com/",
+    "http://www.kugou.com/"
+  ],
+  "background": {
+    "scripts": [
+        "js/background.js"
+    ]
+  },
+  "content_scripts": [
+      {
+        "matches": ["*://music.163.com/", "*://www.kugou.com/"],
+        "js": ["js/import.js", "js/jquery.js"],
+        "run_at": "document_start"
+      }
+  ]
+}
